@@ -1,26 +1,7 @@
 <!DOCTYPE html>
-<head>
-    <style>
-        form {
-                     text-align: center;
-                  }
-             body{
-                     background-color: burlywood;
-                 }
-                 table 
-        {
-            width: 70%;
-            font: 17px Calibri;
-        }
-        table, th, td 
-        {
-            border: solid 1px #DDD;
-            border-collapse: collapse;
-            padding: 2px 3px;
-            text-align: center;
-        }
 
-        </style>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css" />
 
     <title>DigitalLync</title>
 
@@ -29,11 +10,13 @@
 </head>
 
 <body onload="createTable()">
-    <form>
+
+    <form id="form">
         Username *:<input type="text" id="username"> <br><br>
         password *:<input type="password" id="password"> <br><br>
         emailid *:<input type="text" id="emailid"> <br><br>
         city: <select id="city">
+            <option value="">Select</option>
             <option value="Hyderabad">Hyderabad</option>
             <option value="Secunderabad">Secunderabad</option>
             <option value="Banglore">Banglore</option>
@@ -53,198 +36,7 @@
     <div id="cont">
     </div>
 
-
+    <script type="text/javascript" src="script.js"></script>
 </body>
-
-<script>
-    var username = document.getElementById("username");
-    var password = document.getElementById("password");
-    var email = document.getElementById("emailid");
-    var city = document.getElementById("city");
-    var about = document.getElementById("say");
-    var submit = document.getElementById("submitbtn");
-    var editbtn = document.getElementById("edittbtn");
-    editbtn.hidden = true;
-
-    var gender = "";
-    var terms = "Disagree";
-    var user_data = [];
-    // ARRAY FOR HEADER.
-    var arrHead = new Array();
-    arrHead = ['', 'username', 'password', 'email', 'City', 'about', 'gender', 'term'];      // SIMPLY ADD OR REMOVE VALUES IN THE ARRAY FOR TABLE HEADERS.
-
-    function createTable() {
-
-        var empTable = document.createElement('table');
-        empTable.setAttribute('id', 'empTable');            // SET THE TABLE ID.
-
-        var tr = empTable.insertRow(-1);
-
-        for (var h = 0; h < arrHead.length; h++) {
-            var th = document.createElement('th');          // TABLE HEADER.
-            th.innerHTML = arrHead[h];
-            tr.appendChild(th);
-        }
-
-        var div = document.getElementById('cont');
-        div.appendChild(empTable);    // ADD THE TABLE TO  WEB PAGE.
-        div.style.visibility = "hidden";
-    }
-    function validation() {
-        if (document.getElementById("tandc").checked == true) {
-            terms = "Agree";
-        }
-        if ((document.querySelector('input[name = "gender"]:checked'))) {
-            gender = document.querySelector('input[name = "gender"]:checked').value;
-
-        }
-
-        if (username.value == "") {
-            alert("Username cannot be empty");
-            return false;
-        }
-        if (password.value == "") {
-            alert("Password cannot be empty");
-            return false;
-        }
-        if (email.value == "") {
-            alert("Email cannot be empty");
-            return false;
-        }
-        return true;
-    }
-    // ADD A NEW ROW TO THE TABLE
-    function register() {
-        event.preventDefault();
-        //alert("befor");
-        var d=validation();
-      if(d==true)
-      {
-        document.getElementById('cont').style.visibility = "visible";
-        var empTab = document.getElementById('empTable');
-
-        var rowCnt = empTab.rows.length;        // GET TABLE ROW COUNT.
-        var tr = empTab.insertRow(rowCnt);      // TABLE ROW.
-        // tr = empTab.insertRow(rowCnt);
-        var person = [username.value, email.value, password.value, city.value, about.value, gender, terms];
-        user_data[rowCnt] = person;
-        console.log("userarray" + user_data[rowCnt]);
-        for (var c = 0; c < arrHead.length; c++) {
-            var td = document.createElement('td');          // TABLE DEFINITION.
-            td = tr.insertCell(c);
-
-            if (c == 0) {
-                // FIRST COLUMN.
-                createButton("Edit", "editData(this)", td);
-                createButton("Delete", "removeRow(this)", td);
-
-            }
-            else {
-                // for (var key in person) {
-                var ele = document.createElement('input');
-                // ele.setAttribute('type', 'text');
-                ele.setAttribute('value', person[c - 1]);
-
-                td.appendChild(ele);
-                tr.appendChild(td);
-
-                //td.innerHTML= person[key];
-                //th.appendChild(nameHtml);
-                //}
-                // CREATE AND ADD TEXTBOX IN EACH CELL.
-
-            }
-            setFormdata();
-
-        }
-      }
-    }
-    function setFormdata() {
-        username.value = "";
-        password.value = "";
-        email.value = "";
-        about.value = "";
-        document.querySelector('input[name = "gender"]').checked = false;
-        document.getElementById("tandc").checked = false;
-    }
-    function createButton(buttonLabel, onclickdata, td) {
-        var button = document.createElement('input');
-
-        // SET INPUT ATTRIBUTE.
-        button.setAttribute('type', 'button');
-        button.setAttribute('value', buttonLabel);
-
-        // ADD THE BUTTON's 'onclick' EVENT.
-        button.setAttribute('onclick', onclickdata);
-
-        td.appendChild(button);
-        return;
-    }
-
-    function editData(oButton) {
-        submit.hidden = true;
-        editbtn.hidden = false;
-        var index = oButton.parentNode.parentNode.rowIndex;
-        var edit_user_array = [];
-        edit_user_array = user_data[index];
-        username.value = edit_user_array[0];
-        password.value = edit_user_array[1];
-        email.value = edit_user_array[2];
-        city.value = edit_user_array[3];
-        about.value = edit_user_array[4];
-        if (edit_user_array[6] == "Agree") {
-            document.getElementById("tandc").checked = true;
-        }
-        else {
-            document.getElementById("tandc").checked = false;
-        }
-        submit.value = "Update Me";
-
-        editbtn.onclick = function () {
-            event.preventDefault();
-           var b= validation();
-           if(b==true)
-           {
-            var edited = [username.value, password.value, email.value, city.value, about.value, gender, terms];
-            user_data[index] = edited;
-            //document.getElementById('empTable').rows[index].cells.innerHTML=user_data[index];
-            var x = document.getElementById('empTable').rows;
-            var y = x[index].cells
-            for (var i = 1; i < y.length; i++) {
-                // y[i].innerHTML=user_data[index][i+1];
-                y[i].innerHTML = edited[i - 1];
-            }
-            submit.hidden = false;
-            editbtn.hidden = true;
-           }
-        }
-    }
-    // DELETE TABLE ROW.
-    function removeRow(oButton) {
-        var empTab = document.getElementById('empTable');
-        empTab.deleteRow(oButton.parentNode.parentNode.rowIndex);       // BUTTON -> TD -> TR.
-    }
-
-    // EXTRACT AND SUBMIT TABLE DATA.
-    function sumbit() {
-        var myTab = document.getElementById('empTable');
-        var values = new Array();
-
-        // LOOP THROUGH EACH ROW OF THE TABLE.
-        for (row = 1; row < myTab.rows.length - 1; row++) {
-            for (c = 0; c < myTab.rows[row].cells.length; c++) {   // EACH CELL IN A ROW.
-
-                var element = myTab.rows.item(row).cells[c];
-                if (element.childNodes[0].getAttribute('type') == 'text') {
-                    values.push("'" + element.childNodes[0].value + "'");
-                }
-            }
-        }
-        console.log(values);
-    }
-
-
-
-</script>
 
 </html>
