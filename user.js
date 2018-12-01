@@ -8,6 +8,15 @@ function register()
   
     var password = document.getElementById("password").value;
     var email = document.getElementById("emailid").value;
+    if(window.localStorage.getItem(username)!=null)
+    {
+        var exist_user=JSON.parse(window.localStorage.getItem(username));
+        if(username==exist_user.username)
+        {
+            alert("user already exist");
+            return false;
+        }
+    }
   var person={'username':username,'password':password,'name':name,'emailid':email};
     window.localStorage.setItem(username,JSON.stringify(person));
     document.getElementById("registerform").reset();
@@ -39,6 +48,9 @@ function login()
     console.log("succ"+pswd);
     if(user_name==usrname && user_pswd==pswd)
     {
+        window.sessionStorage.setItem("username", user_name);
+        window.sessionStorage.setItem("password", user_pswd);
+        window.location.href="ADD_PRODUCT_27_11_18/product.html"
         alert("login success");
     }
     else

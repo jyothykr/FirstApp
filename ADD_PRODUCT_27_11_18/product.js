@@ -33,6 +33,12 @@ function validation() {
     return true;
 }
 
+function logout()
+{
+    window.sessionStorage.clear();
+    window.location.href="../adduser.html";
+}
+
 function createDiv() {
 
     //for (var i = 0; i < Object.keys(data).length; i++) {
