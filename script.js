@@ -11,7 +11,6 @@ var user_data = [];
 // ARRAY FOR HEADER.
 var arrHead = new Array();
 arrHead = ['', 'username', 'password', 'email', 'City', 'about', 'gender', 'term'];      // SIMPLY ADD OR REMOVE VALUES IN THE ARRAY FOR TABLE HEADERS.
-
 function createTable() {
 
     var empTable = document.createElement('table');
