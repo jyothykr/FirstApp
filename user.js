@@ -23,6 +23,17 @@ function register()
   
 }
 
+function forgotpswd()
+{
+    event.preventDefault();
+    window.location.href="ADD_PRODUCT_27_11_18/forgot.html";
+}
+
+function showpswd()
+{
+
+}
+
 function login_user()
 {
     event.preventDefault();
