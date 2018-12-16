@@ -5,7 +5,6 @@ function showpswd()
     if(window.localStorage.getItem(name)!=null)
     {
     user=JSON.parse(window.localStorage.getItem(name));
-   
     var usrname=user.username;
     var pswd=user.password;
     var email=user.emailid;
