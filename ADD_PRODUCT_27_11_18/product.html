@@ -3,11 +3,11 @@
 <head>
     <link rel="stylesheet" type="text/css" href="product.css" />
     <title>DigitalLync</title>
-    <h1 style="text-align: center">Add Product Form</h1>
+    <h1 style="text-align: center">Add Product</h1>
 
 </head>
 
-<body>
+<body onload="loadProducts();">
         <input id="logout" type="submit" onclick="logout()" value="Logout" style="position: absolute;float: right;margin-left: 950px;">>
     <form id="form">
         Product Id *:<input type="text" id="product_id"> <br><br>
@@ -18,8 +18,9 @@
         <input id="submitbtn" type="submit" onclick="addproduct()" value="Add">
         <input id="edittbtn" type="submit" value="Update Me">
     </form>
-
+    <input id="clearbtn" type="submit" value="Clear All" style="visibility:hidden;" onclick="clearProducts();">
     <div id="cont" class="grid-container">
+           
     </div>
 
 

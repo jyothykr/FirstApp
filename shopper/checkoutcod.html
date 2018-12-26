@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Bootstrap E-commerce Templates</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+    <!-- bootstrap -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="themes/css/bootstrappage.css" rel="stylesheet" />
+
+    <!-- global styles -->
+    <link href="themes/css/flexslider.css" rel="stylesheet" />
+    <link href="themes/css/main.css" rel="stylesheet" />
+
+    <!-- scripts -->
+    <script src="themes/js/jquery-1.7.2.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="themes/js/superfish.js"></script>
+    <script src="themes/js/jquery.scrolltotop.js"></script>
+    <!--[if lt IE 9]>			
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="js/respond.min.js"></script>
+		<![endif]-->
+</head>
+
+<body>
+    <div id="top-bar" class="container">
+        <div class="row">
+            <div class="span4" id="logduser">
+
+            </div>
+            <div class="span8">
+                <div class="account pull-right">
+                    <ul class="user-menu">
+                        <li><a href="customer.html">Products</a></li>
+                        <li><a href="cart.html">Your Cart</a></li>
+                        <li><a href="checkout.html">Checkout</a></li>
+                        <li><a onclick="logout()">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="wrapper" class="container">
+
+        <section class="header_text sub">
+            <img class="pageBanner" src="themes/images/pageBanner.png" alt="New products">
+            <h4><span>Check Out</span></h4>
+        </section>
+        <section class="main-content">
+            <div class="row">
+                <div class="span12">
+                    <div class="accordion" id="accordion2">
+
+
+                        <div class="accordion-group" id="address_div">
+
+
+                            <div id="collapseTwo">
+                                <div class="accordion-inner">
+                                    <div class="row-fluid">
+                                        <div class="span6">
+                                            <h4>Your Personal Details</h4>
+                                            <div class="control-group">
+                                                <label class="control-label">Name*</label>
+                                                <div class="controls">
+                                                    <input type="text" placeholder="" class="input-xlarge" id="addname"><span
+                                                    id="name_error" style="color:red;margin-left: 20px;"></span>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="control-group">
+                                                <label class="control-label">Email Address*</label>
+                                                <div class="controls">
+                                                    <input type="text" placeholder="" class="input-xlarge" id="addemail"><span
+                                                    id="email_error" style="color:red;margin-left: 20px;"></span>
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <label class="control-label">Telephone*</label>
+                                                <div class="controls">
+                                                    <input type="text" placeholder="" class="input-xlarge" id="addphone"><span
+                                                    id="phone_error" style="color:red;margin-left: 20px;"></span>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="span6">
+                                            <h4>Your Address</h4>
+
+                                            <div class="control-group">
+                                                <label class="control-label"><span class="required"></span> Address *:</label>
+                                                <div class="controls">
+                                                    <input type="text" placeholder="" class="input-xlarge" id="addaddress"><span
+                                                    id="address_error" style="color:red;margin-left: 20px;"></span>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="control-group">
+                                                <label class="control-label"><span class="required"></span> City*:</label>
+                                                <div class="controls">
+                                                    <input type="text" placeholder="" class="input-xlarge" id="addcity"><span
+                                                    id="city_error" style="color:red;margin-left: 20px;"></span>
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <label class="control-label"><span class="required"></span> Post Code*:</label>
+                                                <div class="controls">
+                                                    <input type="text" placeholder="" class="input-xlarge" id="addpost"><span
+                                                    id="post_error" style="color:red;margin-left: 20px;"></span>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-group">
+                        <!--	<div class="accordion-heading">
+								<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">Confirm
+									Order</a>
+							</div>-->
+                        <div id="collapseThree" 
+                        >
+                            <div class="accordion-inner">
+                                <div class="row-fluid">
+                                    <div class="control-group">
+                                        <label for="textarea" class="control-label">Comments</label>
+                                        <div class="controls">
+                                            <textarea rows="3" id="textarea" class="span12"></textarea>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-inverse pull-right" onclick="checkout()">Confirm order</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </section>
+
+    <section id="copyright">
+        <span>Copyright 2013 bootstrappage template All right reserved.</span>
+    </section>
+    </div>
+    <script src="themes/js/common.js"></script>
+    <script src="checkoutcod.js"></script>
+</body>
+
+</html>
