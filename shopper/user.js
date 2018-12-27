@@ -64,9 +64,9 @@ function ValidateEmail(inputText) {
     }
 }
 
-function forgotpswd() {
+function forgotpassword() {
     event.preventDefault();
-    window.location.href = "ADD_PRODUCT_27_11_18/forgot.html";
+    window.location.href = "forgotpassword.html";
 }
 
 function showpswd() {
